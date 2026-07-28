@@ -6,7 +6,6 @@ import CountUp from "react-countup";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   BatteryCharging,
@@ -19,16 +18,6 @@ import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 import { AnimatedBlob } from "@/components/animations/animated-blob";
 import { Particles } from "@/components/animations/particles";
-
-const SECTORS = [
-  "Hospitals",
-  "Hotels",
-  "Embassies",
-  "Data Centers",
-  "Agriculture",
-  "Telecom",
-  "Homes",
-];
 
 const HERO_METRICS = [
   { value: 2023, suffix: "", label: "Established", isYear: true },
@@ -85,7 +74,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[100svh] overflow-hidden noise-overlay gradient-mesh pt-28 pb-12 sm:pt-32 sm:pb-16"
+      className="relative isolate min-h-[100svh] overflow-hidden noise-overlay gradient-mesh pt-28 pb-16 sm:pt-32 sm:pb-20"
     >
       <Particles count={16} />
       <AnimatedBlob className="-left-32 top-16 h-[22rem] w-[22rem] opacity-60" color="accent" />
@@ -274,7 +263,7 @@ export function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/75 via-dark/15 to-transparent" />
 
                   <motion.div
-                    className="absolute left-4 top-4 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md"
+                    className="absolute left-4 top-4 z-[2] rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md"
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 }}
@@ -283,7 +272,7 @@ export function Hero() {
                   </motion.div>
 
                   <motion.div
-                    className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5"
+                    className="absolute bottom-4 left-4 right-4 z-[3] rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5"
                     initial={{ opacity: 0, y: 18 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.95, duration: 0.55 }}
@@ -305,10 +294,10 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* Secondary stacked photo */}
+              {/* Secondary stacked photo — top-left so it never covers the caption */}
               <motion.div
-                className="absolute -bottom-6 -left-3 z-[2] hidden w-[42%] overflow-hidden rounded-2xl border border-border shadow-2xl sm:block lg:-left-8"
-                initial={reduce ? false : { opacity: 0, x: -20, y: 20 }}
+                className="absolute -left-3 top-16 z-[2] hidden w-[38%] overflow-hidden rounded-2xl border border-border shadow-2xl sm:block lg:-left-8 lg:top-20"
+                initial={reduce ? false : { opacity: 0, x: -20, y: 12 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.75, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
@@ -326,7 +315,7 @@ export function Hero() {
 
               {/* Floating savings chip */}
               <motion.div
-                className="absolute -right-2 top-20 z-[2] hidden rounded-2xl border border-border bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:block lg:-right-4"
+                className="absolute -right-2 bottom-28 z-[2] hidden rounded-2xl border border-border bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:block lg:-right-4"
                 initial={{ opacity: 0, x: 16 }}
                 animate={{
                   opacity: 1,
@@ -349,48 +338,6 @@ export function Hero() {
             </div>
           </div>
         </div>
-
-        {/* Sector ribbon */}
-        <motion.div
-          className="mt-16 border-t border-foreground/8 pt-6 sm:mt-20"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.55 }}
-        >
-          <p className="mb-4 text-center text-[11px] font-semibold uppercase tracking-[0.24em] text-foreground/35">
-            Trusted across Ethiopia’s critical sectors
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 sm:gap-x-3">
-            {SECTORS.map((sector, i) => (
-              <motion.span
-                key={sector}
-                className="rounded-full border border-foreground/8 bg-card/60 px-3.5 py-1.5 text-xs font-medium text-foreground/65 backdrop-blur-sm"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.95 + i * 0.05, duration: 0.4 }}
-              >
-                {sector}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.a
-          href="#about"
-          className="mx-auto mt-10 flex w-fit flex-col items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/35 transition hover:text-primary"
-          aria-label="Scroll to about section"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-        >
-          Discover G-Power
-          <motion.span
-            animate={reduce ? undefined : { y: [0, 6, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="size-4" />
-          </motion.span>
-        </motion.a>
       </Container>
     </section>
   );

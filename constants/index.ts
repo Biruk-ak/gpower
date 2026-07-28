@@ -22,7 +22,7 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const CONTACT: ContactInfo = {
   phone: "+251 912 628 973",
-  email: "info@gpower.com",
+  email: "jon@gmail.com",
   address: "G-Power Tower, Jemo Michael, Next to Anbesa Garage, Addis Ababa, Ethiopia",
   hours: [
     "Monday – Friday: 8:00 AM – 6:00 PM",
