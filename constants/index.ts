@@ -21,8 +21,8 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const CONTACT: ContactInfo = {
-  phone: "+251 912 628 973",
-  email: "jon@gmail.com",
+  phone: "+251 92 668 8559",
+  email: "info@gpower.et",
   address: "G-Power Tower, Jemo Michael, Next to Anbesa Garage, Addis Ababa, Ethiopia",
   hours: [
     "Monday – Friday: 8:00 AM – 6:00 PM",
