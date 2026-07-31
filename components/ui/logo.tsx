@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 
 const SIZES = {
   sm: { className: "h-10 w-auto", width: 80, height: 86 },
-  md: { className: "h-12 w-auto sm:h-14", width: 112, height: 121 },
-  lg: { className: "h-16 w-auto sm:h-20", width: 140, height: 151 },
+  md: { className: "h-10 w-auto sm:h-11", width: 96, height: 104 },
+  lg: { className: "h-14 w-auto sm:h-16", width: 130, height: 140 },
 } as const;
 
 export function Logo({

@@ -49,19 +49,11 @@ function Metric({
       animate={inView ? { opacity: 1, y: 0 } : undefined}
       transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
     >
-      <p className="font-display text-2xl font-semibold tracking-tight text-foreground sm:text-[1.75rem]">
-        {inView ? (
-          isYear ? (
-            value
-          ) : (
-            <CountUp end={value} duration={1.8} />
-          )
-        ) : (
-          0
-        )}
-        <span className="text-primary">{suffix}</span>
+      <p className="font-display text-xl font-semibold tracking-tight text-dark dark:text-foreground sm:text-2xl">
+        {inView ? (isYear ? value : <CountUp end={value} duration={1.8} />) : 0}
+        <span className="text-primary-dark dark:text-primary">{suffix}</span>
       </p>
-      <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/40">
+      <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-foreground/65 sm:text-[11px]">
         {label}
       </p>
     </motion.div>
@@ -74,17 +66,30 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[100svh] overflow-hidden noise-overlay gradient-mesh pt-28 pb-16 sm:pt-32 sm:pb-20"
+      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden noise-overlay pt-24 pb-8 sm:pt-28 sm:pb-10"
     >
+      {/* Background image — soft but visible */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/solarpicture.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-45 dark:opacity-35"
+        />
+        <div className="absolute inset-0 bg-background/45 dark:bg-background/55" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] via-transparent to-accent/[0.07]" />
+      </div>
+
       <Particles count={16} />
-      <AnimatedBlob className="-left-32 top-16 h-[22rem] w-[22rem] opacity-60" color="accent" />
+      <AnimatedBlob className="-left-32 top-16 h-[22rem] w-[22rem] opacity-40" color="accent" />
       <AnimatedBlob
-        className="right-[-6rem] top-28 h-[28rem] w-[28rem] opacity-50"
+        className="right-[-6rem] top-28 h-[28rem] w-[28rem] opacity-30"
         color="primary"
         delay={2}
       />
 
-      {/* Soft brand watermark */}
       <motion.p
         aria-hidden
         className="pointer-events-none absolute -right-4 top-24 select-none font-display text-[7rem] font-semibold leading-none tracking-tighter text-primary/[0.04] sm:text-[10rem] lg:right-8 lg:text-[14rem]"
@@ -95,12 +100,11 @@ export function Hero() {
         G
       </motion.p>
 
-      <Container className="relative z-[2]">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          {/* Copy column */}
-          <div className="lg:col-span-6 xl:col-span-6">
+      <Container className="relative z-[2] w-full">
+        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6">
             <motion.div
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-card/75 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-card/75 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur-md"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
@@ -110,7 +114,7 @@ export function Hero() {
             </motion.div>
 
             <motion.p
-              className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.32em] text-primary sm:text-sm"
+              className="mb-3 font-display text-xs font-semibold uppercase tracking-[0.32em] text-primary-dark dark:text-primary sm:text-sm"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.08 }}
@@ -118,7 +122,7 @@ export function Hero() {
               {SITE.name} Manufacturing PLC
             </motion.p>
 
-            <h1 className="font-display text-[2.55rem] font-semibold leading-[1.02] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-[3.9rem] xl:text-[4.25rem]">
+            <h1 className="font-display text-[2.35rem] font-semibold leading-[1.02] tracking-tight text-dark dark:text-foreground sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[3.85rem]">
               <span className="block overflow-hidden">
                 <motion.span
                   className="block"
@@ -131,7 +135,7 @@ export function Hero() {
               </span>
               <span className="mt-1 block overflow-hidden">
                 <motion.span
-                  className="relative inline-block text-primary"
+                  className="relative inline-block text-primary-dark dark:text-primary"
                   initial={reduce ? false : { y: "115%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
@@ -149,7 +153,7 @@ export function Hero() {
             </h1>
 
             <motion.p
-              className="mt-7 max-w-xl text-base leading-relaxed text-foreground/60 sm:text-lg"
+              className="mt-5 max-w-xl text-base leading-relaxed text-dark/80 dark:text-foreground/80 sm:text-lg"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.35 }}
@@ -160,7 +164,7 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4"
+              className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.45 }}
@@ -174,7 +178,7 @@ export function Hero() {
                 </Button>
               </MagneticButton>
               <MagneticButton>
-                <Button asChild variant="secondary" size="xl" className="group">
+                <Button asChild variant="secondary" size="xl">
                   <a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>
                     <Phone className="size-4" />
                     {CONTACT.phone}
@@ -184,7 +188,7 @@ export function Hero() {
             </motion.div>
 
             <motion.p
-              className="mt-6 flex items-center gap-2 text-sm text-foreground/45"
+              className="mt-5 flex items-center gap-2 text-sm text-dark/70 dark:text-foreground/70"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -194,7 +198,7 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              className="mt-10 grid grid-cols-2 gap-6 border-t border-foreground/8 pt-7 sm:grid-cols-4"
+              className="mt-8 grid grid-cols-2 gap-5 border-t border-foreground/8 pt-6 sm:grid-cols-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.55 }}
@@ -205,16 +209,9 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Visual column */}
+          {/* Visual column — same design, sized to fit viewport */}
           <div className="relative lg:col-span-6">
-            <div className="relative mx-auto max-w-lg lg:ml-auto lg:max-w-none">
-              {/* Soft rotating frame */}
-              <motion.div
-                aria-hidden
-                className="pointer-events-none absolute -inset-5 rounded-[2.4rem] border border-dashed border-primary/20"
-                animate={reduce ? undefined : { rotate: [0, 1.5, 0, -1.5, 0] }}
-                transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-              />
+            <div className="relative mx-auto w-full max-w-md sm:max-w-lg lg:ml-auto lg:max-w-xl xl:max-w-2xl">
               <motion.div
                 aria-hidden
                 className="pointer-events-none absolute -inset-2 rounded-[2.1rem] bg-gradient-to-br from-primary/20 via-transparent to-accent/25 blur-2xl"
@@ -222,14 +219,13 @@ export function Hero() {
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
               />
 
-              {/* Main image */}
               <motion.div
                 className="relative z-[1] overflow-hidden rounded-[1.85rem] bg-dark shadow-[0_40px_100px_-36px_rgba(11,110,79,0.55)]"
                 initial={reduce ? false : { opacity: 0, y: 28, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.95, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="relative aspect-[5/6] sm:aspect-[4/5]">
+                <div className="relative aspect-[4/5] max-h-[min(78svh,720px)] w-full">
                   <motion.div
                     className="absolute inset-0"
                     initial={reduce ? false : { scale: 1.1 }}
@@ -241,7 +237,7 @@ export function Hero() {
                       alt="G-Power inverter and battery energy storage system"
                       fill
                       priority
-                      sizes="(max-width: 1024px) 90vw, 44vw"
+                      sizes="(max-width: 1024px) 90vw, 48vw"
                       className="object-cover object-center"
                     />
                   </motion.div>
@@ -294,9 +290,8 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* Secondary stacked photo — top-left so it never covers the caption */}
               <motion.div
-                className="absolute -left-3 top-16 z-[2] hidden w-[38%] overflow-hidden rounded-2xl border border-border shadow-2xl sm:block lg:-left-8 lg:top-20"
+                className="absolute -left-3 top-14 z-[2] hidden w-[38%] overflow-hidden rounded-2xl border border-border shadow-2xl sm:block lg:-left-8 lg:top-16"
                 initial={reduce ? false : { opacity: 0, x: -20, y: 12 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.75, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -313,9 +308,8 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating savings chip */}
               <motion.div
-                className="absolute -right-2 bottom-28 z-[2] hidden rounded-2xl border border-border bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:block lg:-right-4"
+                className="absolute -right-2 bottom-24 z-[2] hidden rounded-2xl border border-border bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:block lg:-right-4"
                 initial={{ opacity: 0, x: 16 }}
                 animate={{
                   opacity: 1,
