@@ -13,6 +13,7 @@ import {
   LinkedInIcon,
   XIcon,
 } from "@/components/ui/social-icons";
+import { Logo } from "@/components/ui/logo";
 
 const FOOTER_PRODUCTS = [
   { label: "Battery Storage", href: "#products" },
@@ -45,13 +46,8 @@ export function Footer() {
       <Container className="relative py-20">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
-            <Link href="#home" className="inline-flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-foreground">
-                G
-              </span>
-              <span className="font-display text-2xl font-semibold tracking-tight">
-                {SITE.name}
-              </span>
+            <Link href="#home" className="inline-flex items-center" aria-label={`${SITE.name} home`}>
+              <Logo size="lg" />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/55">
               {SITE.description}

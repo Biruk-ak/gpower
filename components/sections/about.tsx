@@ -17,8 +17,8 @@ export function About() {
           <div className="relative">
             <ImageReveal className="aspect-[4/5] rounded-[2rem]">
               <Image
-                src="/images/install-residential.png"
-                alt="G-Power residential energy storage installation"
+                src="/images/about.png"
+                alt="G-Power 50kW inverter and battery system"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

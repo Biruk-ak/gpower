@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SITE } from "@/constants";
+import { Logo } from "@/components/ui/logo";
 
 export function PageLoader() {
   const [show, setShow] = useState(true);
@@ -24,12 +24,12 @@ export function PageLoader() {
         >
           <div className="text-center">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 12, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+              className="flex justify-center"
             >
-              {SITE.name}
+              <Logo size="lg" priority />
             </motion.div>
             <motion.div
               className="mx-auto mt-5 h-[2px] w-28 overflow-hidden rounded-full bg-white/15"

@@ -10,6 +10,7 @@ import { useActiveSection } from "@/hooks/use-active-section";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.href.replace("#", ""));
@@ -39,15 +40,10 @@ export function Navbar() {
         >
           <Link
             href="#home"
-            className="group relative z-10 flex items-center gap-2.5"
+            className="group relative z-10 flex items-center"
             aria-label={`${SITE.name} home`}
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-white shadow-[0_10px_24px_-10px_rgba(11,110,79,0.8)]">
-              G
-            </span>
-            <span className="font-display text-lg font-semibold tracking-tight text-foreground">
-              {SITE.name}
-            </span>
+            <Logo priority size="md" />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">

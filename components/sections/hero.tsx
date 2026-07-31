@@ -6,13 +6,13 @@ import CountUp from "react-countup";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import {
-  ArrowRight,
   ArrowUpRight,
   BatteryCharging,
   Building2,
   Leaf,
+  Phone,
 } from "lucide-react";
-import { SITE } from "@/constants";
+import { CONTACT, SITE } from "@/constants";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/animations/magnetic-button";
@@ -168,17 +168,17 @@ export function Hero() {
               <MagneticButton>
                 <Button asChild size="xl">
                   <Link href="#contact">
-                    Start Your Project
+                    Contact Us
                     <ArrowUpRight className="size-4" />
                   </Link>
                 </Button>
               </MagneticButton>
               <MagneticButton>
                 <Button asChild variant="secondary" size="xl" className="group">
-                  <Link href="#projects">
-                    See Installations
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                  </Link>
+                  <a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>
+                    <Phone className="size-4" />
+                    {CONTACT.phone}
+                  </a>
                 </Button>
               </MagneticButton>
             </motion.div>
@@ -237,8 +237,8 @@ export function Hero() {
                     transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Image
-                      src="/images/system-showcase.png"
-                      alt="G-Power solar inverter and lithium battery energy storage system"
+                      src="/images/hero-bg-1.jpg"
+                      alt="G-Power inverter and battery energy storage system"
                       fill
                       priority
                       sizes="(max-width: 1024px) 90vw, 44vw"

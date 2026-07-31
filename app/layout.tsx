@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [
       {
-        url: "/images/system-showcase.png",
+        url: "/images/hero-bg-1.jpg",
         width: 1200,
         height: 630,
         alt: "G-Power renewable energy solutions",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} | ${SITE.tagline}`,
     description: SITE.description,
-    images: ["/images/system-showcase.png"],
+    images: ["/images/hero-bg-1.jpg"],
   },
   robots: {
     index: true,
