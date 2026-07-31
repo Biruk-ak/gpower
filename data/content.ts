@@ -7,7 +7,6 @@ import type {
   ProcessStep,
   Testimonial,
   FAQItem,
-  TimelineEvent,
   ClientLogo,
 } from "@/types";
 
@@ -33,30 +32,34 @@ export const CLIENT_LOGOS: ClientLogo[] = [
   { id: "4", name: "Smart Inverters", image: "/images/inverter-smart.png" },
 ];
 
-export const TIMELINE: TimelineEvent[] = [
+export const ABOUT_HIGHLIGHTS = [
   {
-    year: "2023",
-    title: "Founded in Addis Ababa",
+    id: "eco",
+    title: "Eco-Friendly",
     description:
-      "Established by Mr. Ma Ning at G-Power Tower, bringing advanced energy storage to Ethiopia.",
+      "100% renewable energy solutions that reduce your carbon footprint.",
+    icon: "leaf" as const,
   },
   {
-    year: "2024",
-    title: "ISO 9001 Certification",
+    id: "cost",
+    title: "Cost Effective",
     description:
-      "Achieved internationally recognized quality management standards across all operations.",
+      "Significant savings on electricity bills with a smart investment.",
+    icon: "wallet" as const,
   },
   {
-    year: "2025",
-    title: "Nationwide Expansion",
+    id: "reliable",
+    title: "Reliable Power",
     description:
-      "Scaled installations across 40+ cities, serving healthcare, government, and industry.",
+      "Uninterrupted energy supply even during grid outages.",
+    icon: "zap" as const,
   },
   {
-    year: "2026",
-    title: "Enterprise Leadership",
+    id: "service",
+    title: "Expert Service",
     description:
-      "Leading Ethiopia’s transition to reliable solar and battery energy systems.",
+      "Professional installation and dedicated support.",
+    icon: "wrench" as const,
   },
 ];
 
@@ -267,7 +270,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Operations Lead",
     company: "Bereka MCH Specialty Center",
     rating: 5,
-    image: "/images/install-wall.png",
+    image: "/images/avatar.png",
   },
   {
     id: "2",
@@ -276,7 +279,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Facility Manager",
     company: "Lidetu Subcity Administration",
     rating: 5,
-    image: "/images/install-residential.png",
+    image: "/images/avatar.png",
   },
   {
     id: "3",
@@ -285,7 +288,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Business Owner",
     company: "Healthcare Partner",
     rating: 5,
-    image: "/images/install-green.png",
+    image: "/images/avatar.png",
   },
   {
     id: "4",
@@ -294,7 +297,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Technical Director",
     company: "Industrial Client",
     rating: 5,
-    image: "/images/ess-racks.png",
+    image: "/images/avatar.png",
   },
 ];
 

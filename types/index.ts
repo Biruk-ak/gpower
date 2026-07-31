@@ -66,12 +66,6 @@ export interface FAQItem {
   answer: string;
 }
 
-export interface TimelineEvent {
-  year: string;
-  title: string;
-  description: string;
-}
-
 export interface ClientLogo {
   id: string;
   name: string;

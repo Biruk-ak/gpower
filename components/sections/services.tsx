@@ -24,7 +24,7 @@ export function Services() {
       <Container className="relative">
         <SectionHeading
           light
-          eyebrow="Premium Services"
+          eyebrow="Services"
           title="Comprehensive green energy solutions"
           description="From solar installation to advanced storage and lifelong support — engineered for Ethiopian homes, businesses, and critical infrastructure."
         />

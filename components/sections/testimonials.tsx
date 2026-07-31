@@ -82,7 +82,7 @@ export function Testimonials() {
                     “{item.quote}”
                   </p>
                   <div className="mt-8 flex items-center gap-4 border-t border-foreground/8 pt-6">
-                    <div className="relative h-12 w-12 overflow-hidden rounded-full">
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full bg-dark ring-1 ring-foreground/10">
                       <Image
                         src={item.image}
                         alt={item.name}

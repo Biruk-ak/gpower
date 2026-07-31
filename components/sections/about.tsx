@@ -1,110 +1,98 @@
 "use client";
 
 import Image from "next/image";
-import { Award, Eye, Target, Sparkles } from "lucide-react";
-import { TIMELINE } from "@/data/content";
+import { Eye, Target, Leaf, Wallet, Zap, Wrench } from "lucide-react";
+import { ABOUT_HIGHLIGHTS } from "@/data/content";
 import { Container } from "@/components/ui/container";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { FadeUp, ImageReveal, Stagger, StaggerItem } from "@/components/animations/reveal";
-import { TiltCard } from "@/components/animations/tilt-card";
+import { FadeUp, Stagger, StaggerItem } from "@/components/animations/reveal";
+
+const HIGHLIGHT_ICONS = {
+  leaf: Leaf,
+  wallet: Wallet,
+  zap: Zap,
+  wrench: Wrench,
+} as const;
 
 export function About() {
   return (
-    <section id="about" className="relative overflow-hidden py-24 sm:py-28">
-      <div className="pointer-events-none absolute -right-32 top-20 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
+    <section id="about" className="relative overflow-hidden py-16 sm:py-20">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
       <Container>
-        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
-          <div className="relative">
-            <ImageReveal className="aspect-[4/5] rounded-[2rem]">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12">
+          <FadeUp className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
               <Image
                 src="/images/about.png"
                 alt="G-Power 50kW inverter and battery system"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 80vw, 36vw"
                 className="object-cover"
               />
-            </ImageReveal>
-
-            <TiltCard className="absolute -bottom-6 -right-2 max-w-[240px] sm:-right-6">
-              <div className="rounded-2xl border border-border/70 bg-card/90 p-5 shadow-2xl backdrop-blur-md">
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Award className="size-5" />
-                </div>
-                <p className="font-display text-lg font-semibold text-foreground">ISO 9001</p>
-                <p className="mt-1 text-sm text-foreground/55">
-                  Certified quality systems for every installation.
+              <div className="absolute inset-0 bg-gradient-to-tr from-dark/40 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 rounded-xl bg-dark/85 px-3.5 py-2 text-white backdrop-blur-sm">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">
+                  Est. 2020
                 </p>
+                <p className="text-xs text-white/70">ISO 9001 Certified</p>
               </div>
-            </TiltCard>
-
-            <FadeUp className="absolute -left-3 top-10 sm:-left-6">
-              <div className="rounded-2xl border border-border/60 bg-dark px-4 py-3 text-white shadow-xl">
-                <p className="text-xs text-white/55">Sister company of</p>
-                <p className="text-sm font-semibold">Five Star Elevator</p>
-              </div>
-            </FadeUp>
-          </div>
+            </div>
+          </FadeUp>
 
           <div>
-            <SectionHeading
-              align="left"
-              eyebrow="About G-Power"
-              title="Engineering reliable green power for Ethiopia"
-              description="Established in 2023 by Mr. Ma Ning, G-Power Manufacturing PLC delivers sustainable energy storage and solar solutions from G-Power Tower in Jemo Michael, Addis Ababa."
-            />
+            <FadeUp>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                About Us
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+                G-Power Manufacturing PLC
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-foreground/60">
+                Founded in 2020, we are revolutionizing Ethiopia&apos;s energy landscape with
+                clean, dependable power solutions.
+              </p>
+            </FadeUp>
 
-            <Stagger className="mt-10 grid gap-4 sm:grid-cols-2" stagger={0.12}>
-              <StaggerItem>
-                <div className="h-full rounded-3xl border border-foreground/8 bg-card p-6 shadow-[0_20px_50px_-35px_rgba(8,28,21,0.35)]">
-                  <Target className="mb-4 size-5 text-primary" />
-                  <h3 className="font-display text-lg font-semibold text-foreground">Mission</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/60">
-                    Deliver innovative, sustainable energy solutions that empower communities
-                    and businesses with uninterrupted power.
-                  </p>
+            <FadeUp delay={0.08} className="mt-7 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-foreground/8 bg-card px-4 py-4">
+                <div className="mb-2 flex items-center gap-2 text-primary">
+                  <Target className="size-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">Mission</span>
                 </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="h-full rounded-3xl border border-foreground/8 bg-card p-6 shadow-[0_20px_50px_-35px_rgba(8,28,21,0.35)]">
-                  <Eye className="mb-4 size-5 text-primary" />
-                  <h3 className="font-display text-lg font-semibold text-foreground">Vision</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground/60">
-                    Be Ethiopia’s leading provider of advanced energy storage and solar
-                    systems across every sector.
-                  </p>
+                <p className="text-sm leading-relaxed text-foreground/60">
+                  Sustainable energy that keeps communities and businesses powered without
+                  interruption.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-foreground/8 bg-card px-4 py-4">
+                <div className="mb-2 flex items-center gap-2 text-primary">
+                  <Eye className="size-4" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">Vision</span>
                 </div>
-              </StaggerItem>
-            </Stagger>
-
-            <FadeUp delay={0.15} className="mt-10">
-              <div className="rounded-3xl border border-primary/10 bg-primary/[0.03] p-6">
-                <div className="mb-5 flex items-center gap-2 text-primary">
-                  <Sparkles className="size-4" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em]">
-                    Our Journey
-                  </p>
-                </div>
-                <ol className="space-y-5">
-                  {TIMELINE.map((item, i) => (
-                    <li key={item.year} className="relative flex gap-4 pl-2">
-                      {i < TIMELINE.length - 1 ? (
-                        <span className="absolute left-[1.15rem] top-8 h-[calc(100%-0.5rem)] w-px bg-primary/15" />
-                      ) : null}
-                      <span className="relative z-[1] mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                          {item.year}
-                        </p>
-                        <p className="mt-1 font-semibold text-foreground">{item.title}</p>
-                        <p className="mt-1 text-sm text-foreground/55">{item.description}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
+                <p className="text-sm leading-relaxed text-foreground/60">
+                  Ethiopia&apos;s leading provider of advanced solar and energy storage systems.
+                </p>
               </div>
             </FadeUp>
+
+            <Stagger className="mt-6 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-4" stagger={0.06}>
+              {ABOUT_HIGHLIGHTS.map((item) => {
+                const Icon = HIGHLIGHT_ICONS[item.icon];
+                return (
+                  <StaggerItem key={item.id}>
+                    <div>
+                      <span className="mb-2.5 flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <Icon className="size-4" />
+                      </span>
+                      <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-foreground/50">
+                        {item.description}
+                      </p>
+                    </div>
+                  </StaggerItem>
+                );
+              })}
+            </Stagger>
           </div>
         </div>
       </Container>
