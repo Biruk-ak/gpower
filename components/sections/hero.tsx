@@ -12,8 +12,8 @@ import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 
 const HERO_METRICS = [
-  { value: 2023, suffix: "", label: "Established", isYear: true },
-  { value: 12, suffix: "–100kW+", label: "System Range", isYear: false },
+  { value: 2020, suffix: "", label: "Established", isYear: true },
+  { value: 5, suffix: "– 100kW+", label: "System Range", isYear: false },
   { value: 10, suffix: "+", label: "Sectors Served", isYear: false },
   { value: 5, suffix: " yr", label: "Warranty", isYear: false },
 ];
