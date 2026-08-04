@@ -7,7 +7,7 @@ export const SITE = {
   description:
     "G-Power Manufacturing PLC designs, supplies, and installs advanced solar power and energy storage solutions for residential, commercial, industrial, and institutional customers across Ethiopia.",
   url: "https://gpower.et",
-  sisterCompany: "Five Star Elevator Manufacturing PLC",
+  sisterCompany: "Five Star Elevator (lift) Manufacturing PLC",
 } as const;
 
 export const NAV_ITEMS: NavItem[] = [

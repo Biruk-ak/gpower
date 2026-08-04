@@ -5,19 +5,11 @@ import Image from "next/image";
 import CountUp from "react-countup";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
-import {
-  ArrowUpRight,
-  BatteryCharging,
-  Building2,
-  Leaf,
-  Phone,
-} from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import { CONTACT, SITE } from "@/constants";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/animations/magnetic-button";
-import { AnimatedBlob } from "@/components/animations/animated-blob";
-import { Particles } from "@/components/animations/particles";
 
 const HERO_METRICS = [
   { value: 2023, suffix: "", label: "Established", isYear: true },
@@ -45,15 +37,16 @@ function Metric({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 14 }}
+      className="text-center"
+      initial={{ opacity: 0, y: 12 }}
       animate={inView ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
     >
-      <p className="font-display text-xl font-semibold tracking-tight text-dark dark:text-foreground sm:text-2xl">
+      <p className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
         {inView ? (isYear ? value : <CountUp end={value} duration={1.8} />) : 0}
-        <span className="text-primary-dark dark:text-primary">{suffix}</span>
+        <span className="text-accent">{suffix}</span>
       </p>
-      <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-foreground/65 sm:text-[11px]">
+      <p className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-white/55">
         {label}
       </p>
     </motion.div>
@@ -66,272 +59,136 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden noise-overlay pt-24 pb-8 sm:pt-28 sm:pb-10"
+      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-14"
     >
-      {/* Background image — soft but visible */}
+      {/* Background — kept visible */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/solarpicture.jpg"
+          src="/images/gp-hero.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-45 dark:opacity-35"
+          className="object-cover object-[center_35%]"
         />
-        <div className="absolute inset-0 bg-background/45 dark:bg-background/55" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] via-transparent to-accent/[0.07]" />
+        <div className="absolute inset-0 bg-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/35 to-dark/45" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-dark/90 to-transparent" />
       </div>
 
-      <Particles count={16} />
-      <AnimatedBlob className="-left-32 top-16 h-[22rem] w-[22rem] opacity-40" color="accent" />
-      <AnimatedBlob
-        className="right-[-6rem] top-28 h-[28rem] w-[28rem] opacity-30"
-        color="primary"
-        delay={2}
-      />
-
-      <motion.p
-        aria-hidden
-        className="pointer-events-none absolute -right-4 top-24 select-none font-display text-[7rem] font-semibold leading-none tracking-tighter text-primary/[0.04] sm:text-[10rem] lg:right-8 lg:text-[14rem]"
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        G
-      </motion.p>
-
-      <Container className="relative z-[2] w-full">
-        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-6">
-            <motion.div
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-card/75 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur-md"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55 }}
-            >
-              <Leaf className="size-3.5" />
+      <Container className="relative z-[2] flex w-full flex-1 flex-col justify-center">
+        <div className="w-full text-center">
+          <motion.div
+            className="flex items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="hidden h-px w-12 bg-accent/70 sm:block sm:w-20" />
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
               Ethiopian Green Energy · Est. 2023
-            </motion.div>
+            </p>
+            <span className="hidden h-px w-12 bg-accent/70 sm:block sm:w-20" />
+          </motion.div>
 
-            <motion.p
-              className="mb-3 font-display text-xs font-semibold uppercase tracking-[0.32em] text-primary-dark dark:text-primary sm:text-sm"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.08 }}
-            >
-              {SITE.name} Manufacturing PLC
-            </motion.p>
-
-            <h1 className="font-display text-[2.35rem] font-semibold leading-[1.02] tracking-tight text-dark dark:text-foreground sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[3.85rem]">
-              <span className="block overflow-hidden">
-                <motion.span
-                  className="block"
-                  initial={reduce ? false : { y: "115%" }}
-                  animate={{ y: "0%" }}
-                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
-                >
-                  Reliable power.
-                </motion.span>
-              </span>
-              <span className="mt-1 block overflow-hidden">
-                <motion.span
-                  className="relative inline-block text-primary-dark dark:text-primary"
-                  initial={reduce ? false : { y: "115%" }}
-                  animate={{ y: "0%" }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.24 }}
-                >
-                  Sustainable Ethiopia.
-                  <motion.span
-                    aria-hidden
-                    className="absolute -bottom-1 left-0 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-primary via-accent to-transparent"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.9, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </motion.span>
-              </span>
-            </h1>
-
-            <motion.p
-              className="mt-5 max-w-xl text-base leading-relaxed text-dark/80 dark:text-foreground/80 sm:text-lg"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.35 }}
-            >
-              We design, supply, and install advanced solar power and energy storage
-              solutions — enabling uninterrupted, efficient electricity for homes,
-              hospitals, industry, and institutions across Ethiopia.
-            </motion.p>
-
-            <motion.div
-              className="mt-7 flex flex-wrap items-center gap-3 sm:gap-4"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.45 }}
-            >
-              <MagneticButton>
-                <Button asChild size="xl">
-                  <Link href="#contact">
-                    Contact Us
-                    <ArrowUpRight className="size-4" />
-                  </Link>
-                </Button>
-              </MagneticButton>
-              <MagneticButton>
-                <Button asChild variant="secondary" size="xl">
-                  <a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>
-                    <Phone className="size-4" />
-                    {CONTACT.phone}
-                  </a>
-                </Button>
-              </MagneticButton>
-            </motion.div>
-
-            <motion.p
-              className="mt-5 flex items-center gap-2 text-sm text-dark/70 dark:text-foreground/70"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Building2 className="size-3.5 text-primary" />
-              Sister company of Five Star Elevator Manufacturing PLC
-            </motion.p>
-
-            <motion.div
-              className="mt-8 grid grid-cols-2 gap-5 border-t border-foreground/8 pt-6 sm:grid-cols-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.55 }}
-            >
-              {HERO_METRICS.map((item, i) => (
-                <Metric key={item.label} {...item} delay={0.6 + i * 0.07} />
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Visual column — same design, sized to fit viewport */}
-          <div className="relative lg:col-span-6">
-            <div className="relative mx-auto w-full max-w-md sm:max-w-lg lg:ml-auto lg:max-w-xl xl:max-w-2xl">
-              <motion.div
-                aria-hidden
-                className="pointer-events-none absolute -inset-2 rounded-[2.1rem] bg-gradient-to-br from-primary/20 via-transparent to-accent/25 blur-2xl"
-                animate={reduce ? undefined : { opacity: [0.4, 0.7, 0.4] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-              />
-
-              <motion.div
-                className="relative z-[1] overflow-hidden rounded-[1.85rem] bg-dark shadow-[0_40px_100px_-36px_rgba(11,110,79,0.55)]"
-                initial={reduce ? false : { opacity: 0, y: 28, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.95, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          <h1 className="mt-6 sm:mt-8">
+            <span className="block overflow-hidden">
+              <motion.span
+                className="block font-display text-[clamp(3.5rem,12vw,8.5rem)] font-semibold leading-[0.9] tracking-tight text-white"
+                initial={reduce ? false : { y: "110%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
               >
-                <div className="relative aspect-[4/5] max-h-[min(78svh,720px)] w-full">
-                  <motion.div
-                    className="absolute inset-0"
-                    initial={reduce ? false : { scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <Image
-                      src="/images/hero-bg-1.jpg"
-                      alt="G-Power inverter and battery energy storage system"
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 90vw, 48vw"
-                      className="object-cover object-center"
-                    />
-                  </motion.div>
-
-                  {!reduce ? (
-                    <motion.div
-                      aria-hidden
-                      className="absolute inset-0 origin-left bg-primary"
-                      initial={{ scaleX: 1 }}
-                      animate={{ scaleX: 0 }}
-                      transition={{
-                        duration: 0.95,
-                        delay: 0.18,
-                        ease: [0.76, 0, 0.24, 1],
-                      }}
-                    />
-                  ) : null}
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/75 via-dark/15 to-transparent" />
-
-                  <motion.div
-                    className="absolute left-4 top-4 z-[2] rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md"
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9 }}
-                  >
-                    12 kW – 100 kW+
-                  </motion.div>
-
-                  <motion.div
-                    className="absolute bottom-4 left-4 right-4 z-[3] rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5"
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.95, duration: 0.55 }}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/20 text-accent">
-                        <BatteryCharging className="size-5" />
-                      </span>
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
-                          Solar · Storage · Hybrid
-                        </p>
-                        <p className="mt-1 text-sm font-medium leading-snug text-white">
-                          Custom power backup for healthcare, telecom, commerce & homes
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="absolute -left-3 top-14 z-[2] hidden w-[38%] overflow-hidden rounded-2xl border border-border shadow-2xl sm:block lg:-left-8 lg:top-16"
-                initial={reduce ? false : { opacity: 0, x: -20, y: 12 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                {SITE.name}
+              </motion.span>
+            </span>
+            <span className="mt-3 block overflow-hidden">
+              <motion.span
+                className="block font-display text-lg font-medium tracking-[0.2em] text-white/65 uppercase sm:text-xl md:text-2xl md:tracking-[0.28em]"
+                initial={reduce ? false : { y: "110%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
               >
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src="/images/install-residential.png"
-                    alt="G-Power residential energy storage installation"
-                    fill
-                    sizes="200px"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent" />
-                </div>
-              </motion.div>
+                Manufacturing PLC
+              </motion.span>
+            </span>
+          </h1>
 
-              <motion.div
-                className="absolute -right-2 bottom-24 z-[2] hidden rounded-2xl border border-border bg-card/95 px-4 py-3 shadow-xl backdrop-blur-md sm:block lg:-right-4"
-                initial={{ opacity: 0, x: 16 }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                  y: reduce ? 0 : [0, -7, 0],
-                }}
-                transition={{
-                  opacity: { delay: 1.05, duration: 0.45 },
-                  x: { delay: 1.05, duration: 0.45 },
-                  y: { delay: 1.4, duration: 5.5, repeat: Infinity, ease: "easeInOut" },
-                }}
+          <motion.div
+            className="mx-auto mt-8 h-1 w-16 rounded-full bg-accent sm:mt-10"
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          <motion.p
+            className="mx-auto mt-7 max-w-3xl font-display text-2xl font-semibold leading-snug tracking-tight text-white sm:text-3xl md:text-4xl"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            Reliable power for a{" "}
+            <span className="text-accent">sustainable Ethiopia</span>.
+          </motion.p>
+
+          <motion.p
+            className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            Solar and energy storage systems for homes, hospitals, industry, and
+            institutions — engineered for uninterrupted power.
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.6 }}
+          >
+            <MagneticButton>
+              <Button asChild size="xl" variant="accent">
+                <Link href="#contact">
+                  Contact Us
+                  <ArrowUpRight className="size-4" />
+                </Link>
+              </Button>
+            </MagneticButton>
+            <MagneticButton>
+              <Button
+                asChild
+                size="xl"
+                className="border border-white/25 bg-white/10 text-white backdrop-blur-md hover:bg-white/20"
               >
-                <p className="text-[11px] uppercase tracking-[0.16em] text-foreground/45">
-                  Uninterrupted
-                </p>
-                <p className="font-display text-lg font-semibold text-primary">
-                  Power Anytime
-                </p>
-              </motion.div>
-            </div>
-          </div>
+                <a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>
+                  <Phone className="size-4" />
+                  {CONTACT.phone}
+                </a>
+              </Button>
+            </MagneticButton>
+          </motion.div>
+
+          <motion.p
+            className="mt-6 text-xl text-white/45"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.75 }}
+          >
+            Sister company of {SITE.sisterCompany}
+          </motion.p>
         </div>
+
+        <motion.div
+          className="mt-14 grid w-full grid-cols-2 gap-6 border-t border-white/15 pt-8 sm:mt-16 sm:grid-cols-4 sm:gap-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          {HERO_METRICS.map((item, i) => (
+            <Metric key={item.label} {...item} delay={0.85 + i * 0.06} />
+          ))}
+        </motion.div>
       </Container>
     </section>
   );
