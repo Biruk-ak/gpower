@@ -21,21 +21,14 @@ export function About() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-12">
           <FadeUp className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-[1.5rem] bg-[#0b6e4f] sm:aspect-[3/5]">
               <Image
-                src="/images/about.png"
-                alt="G-Power 50kW inverter and battery system"
+                src="/images/about.jpg"
+                alt="G-Power solar panel and lithium battery energy storage products"
                 fill
                 sizes="(max-width: 1024px) 80vw, 36vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-dark/40 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 rounded-xl bg-dark/85 px-3.5 py-2 text-white backdrop-blur-sm">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-accent">
-                  Est. 2020
-                </p>
-                <p className="text-xs text-white/70">ISO 9001 Certified</p>
-              </div>
             </div>
           </FadeUp>
 
