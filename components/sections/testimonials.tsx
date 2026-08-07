@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
@@ -42,7 +41,7 @@ export function Testimonials() {
             className="max-w-2xl"
             eyebrow="Testimonials"
             title="What our clients say"
-            description="Real feedback from healthcare, government, and business partners across Ethiopia."
+            description="Real feedback from homeowners, businesses, and partners across Ethiopia."
           />
           <div className="flex gap-2">
             <Button
@@ -82,18 +81,17 @@ export function Testimonials() {
                     “{item.quote}”
                   </p>
                   <div className="mt-8 flex items-center gap-4 border-t border-foreground/8 pt-6">
-                    <div className="relative h-12 w-12 overflow-hidden rounded-full bg-dark ring-1 ring-foreground/10">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        sizes="48px"
-                        className="object-cover"
-                      />
+                    <div
+                      aria-hidden
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-base font-semibold text-white"
+                    >
+                      {item.initial}
                     </div>
                     <div>
                       <p className="font-semibold text-foreground">{item.name}</p>
-                      <p className="text-sm text-foreground/50">{item.company}</p>
+                      {item.company ? (
+                        <p className="text-sm text-foreground/50">{item.company}</p>
+                      ) : null}
                     </div>
                   </div>
                 </article>

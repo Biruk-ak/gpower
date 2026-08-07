@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Clock, Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
+import { Clock, ExternalLink, Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
 import { CONTACT } from "@/constants";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -25,8 +25,10 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-const WHATSAPP_NUMBER = CONTACT.phone;
-const WHATSAPP_LINK = `https://wa.me/${CONTACT.phone.replace(/\D/g, "")}`;
+const WHATSAPP_NUMBER = CONTACT.phones[0];
+const WHATSAPP_LINK = `https://wa.me/${CONTACT.phones[0].replace(/\D/g, "")}`;
+const MAP_EMBED_SRC =
+  "https://maps.google.com/maps?q=G-Power+Manufacturing+PLC,+Jemo+Michael,+Addis+Ababa&ftid=0x164b81feae8924c7:0xfc5c935f5c1e7111&z=16&output=embed";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -66,13 +68,13 @@ export function Contact() {
         <div className="mt-14 grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
           <FadeUp className="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:gap-5">
             {[
-              {
+              ...CONTACT.phones.map((phone, index) => ({
                 icon: Phone,
-                label: "Phone",
-                value: CONTACT.phone,
-                href: `tel:${CONTACT.phone.replace(/\s/g, "")}`,
+                label: CONTACT.phones.length > 1 ? `Phone ${index + 1}` : "Phone",
+                value: phone,
+                href: `tel:${phone.replace(/\s/g, "")}`,
                 external: false,
-              },
+              })),
               {
                 icon: WhatsAppIcon,
                 label: "WhatsApp",
@@ -89,7 +91,7 @@ export function Contact() {
               },
             ].map((item) => (
               <a
-                key={item.label}
+                key={`${item.label}-${item.value}`}
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
@@ -103,13 +105,22 @@ export function Contact() {
               </a>
             ))}
 
-            <div className="rounded-2xl border border-foreground/8 bg-card p-5 sm:col-span-2 lg:col-span-1">
+            <a
+              href={CONTACT.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-2xl border border-foreground/8 bg-card p-5 transition hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg sm:col-span-2 lg:col-span-1"
+            >
               <div className="mb-3 flex items-center gap-2 text-primary">
                 <MapPin className="size-5" />
                 <p className="text-sm font-semibold">Visit Us</p>
               </div>
               <p className="text-sm leading-relaxed text-foreground/65">{CONTACT.address}</p>
-            </div>
+              <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+                Open in Google Maps
+                <ExternalLink className="size-3.5" />
+              </p>
+            </a>
 
             <div className="rounded-2xl border border-foreground/8 bg-card p-5 sm:col-span-2 lg:col-span-1">
               <div className="mb-3 flex items-center gap-2 text-primary">
@@ -191,6 +202,62 @@ export function Contact() {
             </form>
           </FadeUp>
         </div>
+
+        <FadeUp delay={0.15} className="mt-10">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-foreground/8 bg-dark shadow-[0_40px_90px_-50px_rgba(8,28,21,0.55)]">
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-dark/70 via-transparent to-transparent sm:from-dark/55" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-dark/50 to-transparent" />
+
+            <div className="relative z-[2] grid lg:grid-cols-[minmax(0,18rem)_1fr]">
+              <div className="flex flex-col justify-between gap-6 p-6 text-white sm:p-7 lg:min-h-[22rem]">
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent">
+                    Location
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl font-semibold leading-tight">
+                    G-Power Tower
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/65">
+                    {CONTACT.address}
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-accent" />
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
+                        Area
+                      </p>
+                      <p className="mt-0.5 text-sm text-white/80">Jemo Michael, Addis Ababa</p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={CONTACT.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-dark transition hover:brightness-105"
+                  >
+                    Open in Google Maps
+                    <ExternalLink className="size-4" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="relative min-h-[16rem] sm:min-h-[20rem] lg:min-h-[22rem]">
+                <iframe
+                  title="G-Power Manufacturing PLC location on Google Maps"
+                  src={MAP_EMBED_SRC}
+                  className="absolute inset-0 h-full w-full border-0 grayscale-[0.15] contrast-[1.05]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </FadeUp>
       </Container>
     </section>
   );

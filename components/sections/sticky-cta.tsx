@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Phone, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CONTACT } from "@/constants";
 
-const CONTACT_PHONE = "+251 92 668 8559";
-const PHONE_DIGITS = CONTACT_PHONE.replace(/\D/g, "");
+const PRIMARY_PHONE_DIGITS = CONTACT.phones[0].replace(/\D/g, "");
+const SECONDARY_PHONE_DIGITS = CONTACT.phones[1].replace(/\D/g, "");
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -26,16 +27,23 @@ function TelegramIcon({ className }: { className?: string }) {
 
 const ACTIONS = [
   {
-    id: "call",
+    id: "call-1",
     label: "Call",
-    href: `tel:+${PHONE_DIGITS}`,
+    href: `tel:+${PRIMARY_PHONE_DIGITS}`,
     className: "bg-primary text-white hover:bg-primary-dark",
+    icon: Phone,
+  },
+  {
+    id: "call-2",
+    label: "Call 2",
+    href: `tel:+${SECONDARY_PHONE_DIGITS}`,
+    className: "bg-primary-dark text-white hover:bg-primary",
     icon: Phone,
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: `https://wa.me/${PHONE_DIGITS}`,
+    href: `https://wa.me/${PRIMARY_PHONE_DIGITS}`,
     className: "bg-[#25D366] text-white hover:brightness-110",
     icon: WhatsAppIcon,
   },
@@ -100,8 +108,8 @@ export function StickyCTA() {
                   <motion.a
                     key={action.id}
                     href={action.href}
-                    target={action.id === "call" ? undefined : "_blank"}
-                    rel={action.id === "call" ? undefined : "noreferrer"}
+                    target={action.id.startsWith("call") ? undefined : "_blank"}
+                    rel={action.id.startsWith("call") ? undefined : "noreferrer"}
                     aria-label={action.label}
                     className={cn(
                       "flex h-12 w-12 items-center justify-center rounded-full shadow-xl transition",

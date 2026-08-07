@@ -57,7 +57,7 @@ export interface Testimonial {
   name: string;
   company: string;
   rating: number;
-  image: string;
+  initial: string;
 }
 
 export interface FAQItem {
@@ -73,8 +73,9 @@ export interface ClientLogo {
 }
 
 export interface ContactInfo {
-  phone: string;
+  phones: string[];
   email: string;
   address: string;
   hours: string[];
+  mapsUrl: string;
 }

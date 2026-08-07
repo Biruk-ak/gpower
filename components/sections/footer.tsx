@@ -135,7 +135,9 @@ export function Footer() {
               ))}
             </ul>
             <div className="mt-8 space-y-2 text-sm text-white/55">
-              <p>{CONTACT.phone}</p>
+              {CONTACT.phones.map((phone) => (
+                <p key={phone}>{phone}</p>
+              ))}
               <p>{CONTACT.email}</p>
             </div>
           </div>

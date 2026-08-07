@@ -18,7 +18,7 @@ export const HERO_STATS: Stat[] = [
 ];
 
 export const COMPANY_STATS: Stat[] = [
-  { value: 3, suffix: "+", label: "Years of Excellence" },
+  { value: 6, suffix: "+", label: "Years of Excellence" },
   { value: 2500, suffix: "+", label: "Projects Delivered" },
   { value: 2500, suffix: "+", label: "Happy Customers" },
   { value: 40, suffix: "+", label: "Cities Served" },
@@ -34,32 +34,22 @@ export const CLIENT_LOGOS: ClientLogo[] = [
 
 export const ABOUT_HIGHLIGHTS = [
   {
-    id: "eco",
-    title: "Eco-Friendly",
-    description:
-      "100% renewable energy solutions that reduce your carbon footprint.",
+    id: "iso",
+    title: "ISO 9001 Certified",
+    description: "Quality management systems certified for excellence.",
+    icon: "award" as const,
+  },
+  {
+    id: "clean",
+    title: "Clean & Renewable",
+    description: "Eco-friendly solutions that reduce your carbon footprint.",
     icon: "leaf" as const,
   },
   {
-    id: "cost",
-    title: "Cost Effective",
-    description:
-      "Significant savings on electricity bills with a smart investment.",
-    icon: "wallet" as const,
-  },
-  {
-    id: "reliable",
-    title: "Reliable Power",
-    description:
-      "Uninterrupted energy supply even during grid outages.",
-    icon: "zap" as const,
-  },
-  {
-    id: "service",
-    title: "Expert Service",
-    description:
-      "Professional installation and dedicated support.",
-    icon: "wrench" as const,
+    id: "warranty",
+    title: "5-Year Warranty",
+    description: "Comprehensive warranty for peace of mind.",
+    icon: "shield" as const,
   },
 ];
 
@@ -266,38 +256,83 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
     quote:
-      "I was very satisfied with the product and the staff’s flawless customer handling. What caught my attention even more was G-Power’s complaint resolution efficiency.",
-    name: "Operations Lead",
-    company: "Bereka MCH Specialty Center",
+      "G-Power's solar system has completely transformed our home's energy supply. Reliable and cost-effective!",
+    name: "Abebe Bekele",
+    company: "Homeowner · Addis Ababa",
     rating: 5,
-    image: "/images/avatar.png",
+    initial: "A",
   },
   {
     id: "2",
     quote:
-      "G-Power’s product delivery and installation speed was impressive. They also have adept technicians and quality customer service.",
-    name: "Facility Manager",
-    company: "Lidetu Subcity Administration",
+      "Working with G-Power has been a game changer. The installation was smooth, and the batteries are incredibly reliable, ensuring steady electricity supply even during outages. Our work has never been interrupted.",
+    name: "Mr. Daniel",
+    company: "IT Manager · Elilly Hotel",
     rating: 5,
-    image: "/images/avatar.png",
+    initial: "M",
   },
   {
     id: "3",
     quote:
-      "We’re extremely pleased with the products we purchased. They’ve worked so well for us that we’ve already recommended G-Power to four other people.",
-    name: "Business Owner",
-    company: "Healthcare Partner",
+      "We switched to G-Power and our electricity bills dropped significantly. Highly recommended!",
+    name: "Sara Tesfaye",
+    company: "Business Owner · Local Shop",
     rating: 5,
-    image: "/images/avatar.png",
+    initial: "S",
   },
   {
     id: "4",
     quote:
-      "We are highly satisfied with the product, both in terms of quality and performance. It has proven to be a valuable investment.",
-    name: "Technical Director",
-    company: "Industrial Client",
+      "G-Power is a game changer. Their batteries provide uninterrupted power supply, which is crucial for our business. Their customer service is top notch and they support us every step of the way.",
+    name: "Mr. Teferi Solomon",
+    company: "IT Property Management & Control Senior Officer · Awach Saccos Ltd",
     rating: 5,
-    image: "/images/avatar.png",
+    initial: "M",
+  },
+  {
+    id: "5",
+    quote:
+      "Excellent service and quality products. Our farm now runs entirely on solar!",
+    name: "Daniel Mekonnen",
+    company: "Farm Owner · Debre Zeit",
+    rating: 5,
+    initial: "D",
+  },
+  {
+    id: "6",
+    quote:
+      "Installing G-Power in our complex was the best decision. The energy storage system is efficient, and we've seen a significant reduction in power issues. The team delivered exactly what they promised.",
+    name: "Mr. Mulugeta",
+    company: "Property Owner",
+    rating: 5,
+    initial: "M",
+  },
+  {
+    id: "7",
+    quote:
+      "Professional installation and great after-sales support. Thank you G-Power!",
+    name: "Hana Abraham",
+    company: "Project Manager · Construction Company",
+    rating: 5,
+    initial: "H",
+  },
+  {
+    id: "8",
+    quote:
+      "G-Power has revolutionized power management on our farm. The batteries and inverters keep our water pumps running smoothly. The solar integration is seamless, and we've significantly reduced energy costs while improving reliability.",
+    name: "Mr. Khalid",
+    company: "Owner · Ertale International Agricultural dev't PLC",
+    rating: 5,
+    initial: "M",
+  },
+  {
+    id: "9",
+    quote:
+      "The hybrid inverter is perfect for our office needs. Uninterrupted power!",
+    name: "Yonas Samuel",
+    company: "Tech Entrepreneur · Addis Ababa",
+    rating: 5,
+    initial: "Y",
   },
 ];
 

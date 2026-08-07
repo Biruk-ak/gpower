@@ -86,7 +86,7 @@ export function Hero() {
           >
             <span className="hidden h-px w-12 bg-accent/70 sm:block sm:w-20" />
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
-              Ethiopian Green Energy · Est. 2023
+              Ethiopian Green Energy · Est. 2020
             </p>
             <span className="hidden h-px w-12 bg-accent/70 sm:block sm:w-20" />
           </motion.div>
@@ -161,16 +161,28 @@ export function Hero() {
                 size="xl"
                 className="border border-white/25 bg-white/10 text-white backdrop-blur-md hover:bg-white/20"
               >
-                <a href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}>
+                <a href={`tel:${CONTACT.phones[0].replace(/\s/g, "")}`}>
                   <Phone className="size-4" />
-                  {CONTACT.phone}
+                  {CONTACT.phones[0]}
+                </a>
+              </Button>
+            </MagneticButton>
+            <MagneticButton>
+              <Button
+                asChild
+                size="xl"
+                className="border border-white/25 bg-white/10 text-white backdrop-blur-md hover:bg-white/20"
+              >
+                <a href={`tel:${CONTACT.phones[1].replace(/\s/g, "")}`}>
+                  <Phone className="size-4" />
+                  {CONTACT.phones[1]}
                 </a>
               </Button>
             </MagneticButton>
           </motion.div>
 
           <motion.p
-            className="mt-6 text-xl text-white/45"
+            className="mt-6 inline-block rounded-xl bg-accent px-4 py-2.5 text-sm font-bold text-dark sm:text-base"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.75 }}
