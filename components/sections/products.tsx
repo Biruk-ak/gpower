@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { PRODUCTS } from "@/data/content";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Stagger, StaggerItem } from "@/components/animations/reveal";
 import { TiltCard } from "@/components/animations/tilt-card";
 
@@ -29,7 +32,11 @@ export function Products() {
                       alt={product.title}
                       fill
                       sizes="(max-width: 640px) 100vw, 25vw"
-                      className="object-contain p-4 transition duration-700 group-hover:scale-105 sm:object-cover sm:p-0"
+                      className={
+                        product.id === "elevator"
+                          ? "object-cover transition duration-700 group-hover:scale-105"
+                          : "object-contain p-4 transition duration-700 group-hover:scale-105 sm:object-cover sm:p-0"
+                      }
                     />
                     <div className="absolute left-4 top-4">
                       <Badge className="bg-card/90 shadow-sm">{product.category}</Badge>
@@ -42,16 +49,28 @@ export function Products() {
                     <p className="mt-3 text-sm leading-relaxed text-foreground/60">
                       {product.description}
                     </p>
-                    <ul className="mt-5 flex flex-wrap gap-2">
-                      {product.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="rounded-full bg-primary/8 px-3 py-1 text-xs font-medium text-primary"
-                        >
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                    {product.features.length > 0 ? (
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {product.features.map((feature) => (
+                          <li
+                            key={feature}
+                            className="rounded-full bg-primary/8 px-3 py-1 text-xs font-medium text-primary"
+                          >
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    {product.ctaLabel && product.ctaHref ? (
+                      <div className="mt-6">
+                        <Button asChild>
+                          <Link href={product.ctaHref}>
+                            {product.ctaLabel}
+                            <ArrowUpRight className="size-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    ) : null}
                   </div>
                 </article>
               </TiltCard>

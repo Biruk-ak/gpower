@@ -33,6 +33,8 @@ export interface Product {
   category: string;
   image: string;
   features: string[];
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export interface Project {

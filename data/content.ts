@@ -142,6 +142,16 @@ export const WHY_CHOOSE: WhyChooseItem[] = [
 
 export const PRODUCTS: Product[] = [
   {
+    id: "elevator",
+    title: "Elevator",
+    description: "Five Star Elevator",
+    category: "Elevator",
+    image: "/images/elevator.jpg",
+    features: [],
+    ctaLabel: "Request Quote",
+    ctaHref: "#contact",
+  },
+  {
     id: "battery",
     title: "Lithium Battery Storage",
     description:
