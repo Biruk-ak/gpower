@@ -29,12 +29,17 @@ export interface WhyChooseItem {
 export interface Product {
   id: string;
   title: string;
+  subtitle?: string;
   description: string;
   category: string;
   image: string;
   features: string[];
   ctaLabel?: string;
   ctaHref?: string;
+  details?: {
+    title: string;
+    items: string[];
+  };
 }
 
 export interface Project {

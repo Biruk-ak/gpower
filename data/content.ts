@@ -143,13 +143,12 @@ export const WHY_CHOOSE: WhyChooseItem[] = [
 export const PRODUCTS: Product[] = [
   {
     id: "elevator",
-    title: "Elevator",
-    description: "Five Star Elevator",
+    title: "Five Star Elevator",
+    description:
+      "Installation and maintenance services, including warranty and maintenance offerings. A recent third-party listing advertises a 5-year warranty.",
     category: "Elevator",
     image: "/images/elevator.jpg",
-    features: [],
-    ctaLabel: "Request Quote",
-    ctaHref: "#contact",
+    features: ["Passenger elevators", "Hospital elevators", "Home elevators"],
   },
   {
     id: "battery",
@@ -159,6 +158,16 @@ export const PRODUCTS: Product[] = [
     category: "Storage",
     image: "/images/battery-pair.png",
     features: ["Long cycle life", "Smart BMS", "Modular scaling"],
+    details: {
+      title: "Battery · Inverter",
+      items: [
+        "1.2kWh (12V)",
+        "2.5kWh (24V)",
+        "5kWh (48V)",
+        "10kWh (48V)",
+        "16kWh (48V)",
+      ],
+    },
   },
   {
     id: "solar",
